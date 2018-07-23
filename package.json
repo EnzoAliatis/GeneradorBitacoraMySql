@@ -1,0 +1,14 @@
+{
+  "name": "ProgramaBBDD",
+  "version": "1.0.0",
+  "description": "Script que genera triggers a una bbdd",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index "
+  },
+  "author": "Enzo Aliatis",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
