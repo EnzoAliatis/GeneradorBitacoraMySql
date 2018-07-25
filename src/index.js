@@ -42,6 +42,9 @@ const startApp = async () => {
   console.log(camposTablas[1])
 
 
+  // ahora crear procedimiento almacenados por tabla
+
+
 
 
 }
