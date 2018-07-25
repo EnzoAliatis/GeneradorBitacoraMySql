@@ -4,6 +4,8 @@ const consultaSimple = require('./funciones/consultaSimple')
 
 const dameCampos = require('./funciones/dameCampos')
 
+const creadorProcedimientos = require('./funciones/creadorProcedimientos')
+
 
 
 
@@ -14,10 +16,10 @@ const startApp = async () => {
   const nameDataBase = 'proyecto'
   const setDataBaseQuery = `USE ${nameDataBase}`
   const consultaTablasQuery = `SHOW FULL TABLES FROM ${nameDataBase};`
-  const consultaCampos = 'DESCRIBE '
+
+
 
   let nombreTablas = []
-  let nombreCampos = []
 
   const seteado = await consultaSimple(connection, setDataBaseQuery)
 
@@ -34,17 +36,30 @@ const startApp = async () => {
   })
 
 
-  console.log(nombreTablas)
 
 
   const camposTablas = await dameCampos(nombreTablas, connection)
 
-  console.log(camposTablas[1])
-
 
   // ahora crear procedimiento almacenados por tabla
 
+  nombreTablas.map(async (item, idx) => {
+    console.log(item)
+    let camposTemp = []
+    let typesTemp = []
+    camposTablas[idx].map((i, x) => {
+      camposTemp.push(i.Field)
+      typesTemp.push(i.Type)
+    })
+    const creandoProcedimientos = await creadorProcedimientos(camposTemp, typesTemp, item)
 
+    if (creandoProcedimientos) {
+      console.log('Procedimientos creados para la tabla ', item)
+    }
+  })
+
+
+  
 
 
 }
