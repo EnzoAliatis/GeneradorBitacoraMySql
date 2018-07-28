@@ -24,6 +24,8 @@ const startApp = async () => {
   const setDataBaseQuery = `USE ${nameDataBase}`
   const consultaTablasQuery = `SHOW FULL TABLES FROM ${nameDataBase};`
 
+  const helperQuery = `Tables_in_${nameDataBase}`
+
   const queryBitacora = bitacora(bitacoraConfig)
 
 
@@ -42,11 +44,10 @@ const startApp = async () => {
   const nombreTablasResult = await consultaSimple(connection, consultaTablasQuery)
 
   nombreTablasResult.map(item => {
-    nombreTablas.push(item.Tables_in_proyecto)
+    nombreTablas.push(item.Tables_in_prueba)
   })
 
-
-
+  console.log(nombreTablasResult)
 
   const camposTablas = await dameCampos(nombreTablas, connection)
 
@@ -78,6 +79,8 @@ const startApp = async () => {
       console.log('Error el INDEX')
     }
   })
+
+
 }
 
 
