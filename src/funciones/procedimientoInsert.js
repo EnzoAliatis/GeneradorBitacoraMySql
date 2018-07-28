@@ -14,6 +14,8 @@ const queryCamposIn = (listaCampos, tipoCampos) => {
   return qCampos
 }
 
+
+// AQUI CREO EL STRING CON , y evitando el ID 
 const queryCampos = (listaCampos, tipoCampos) => {
   let qCampos = ""
   listaCampos.map((item, idx) => {
