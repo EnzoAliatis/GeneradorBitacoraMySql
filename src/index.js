@@ -54,7 +54,7 @@ const startApp = async () => {
     const creandoProcedimientos = await creadorProcedimientos(camposTemp, typesTemp, item)
 
     if (creandoProcedimientos) {
-      console.log('Procedimientos creados para la tabla ', item)
+      console.log('Procedimientos INSERTAR creados para la tabla ', item)
     }
   })
 
