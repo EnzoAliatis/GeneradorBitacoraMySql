@@ -6,6 +6,8 @@ const dameCampos = require('./funciones/dameCampos')
 
 const creadorProcedimientos = require('./funciones/creadorProcedimientos')
 
+const creadorTriggers = require('./funciones/creadorTriggers')
+
 
 
 
@@ -56,6 +58,12 @@ const startApp = async () => {
     if (creandoProcedimientos) {
       console.log('Procedimientos Creados para la tabla ', nombreTabla)
     }
+
+    const creandoTriggers = await creadorTriggers(nombreTabla)
+    if (creandoTriggers) {
+      console.log('Triggers creados para la tabla ', nombreTabla)
+    }
+
   })
 
 
