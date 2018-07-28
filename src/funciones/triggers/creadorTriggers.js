@@ -21,6 +21,7 @@ const creadorTriggers = (nombreTabla) => {
     }
 
     if (insercion && actualizacion && eliminacion) {
+      console.log('Triggers Creados Correctamente')
       resolve(true)
     } else {
       console.log('Error en el creador de Triggers')

@@ -21,6 +21,7 @@ const creadorProcedimientos =  (listaCampos, tipoCampos, nombreTabla) => {
     }
 
     if(insert && update && borrar) {
+      console.log('Procedimiento Creados Correctamente')
       resolve(true)
     } else {
       console.log('Error en el creador de Procedimientos')

@@ -1,4 +1,4 @@
-
+const anadirLinea = require('../utils/anadirLinea')
 
 
 const queryCamposIn = (listaCampos, tipoCampos) => {
@@ -38,9 +38,17 @@ const procedimientoUpdate = (listaCampos, tipoCampos, nombreTabla) => {
   const camposSet = queryCamposSet(listaCampos)
 
 
-  return new Promise((resolve, reject) => {
-    console.log(`CREATE PROCEDURE actualizar${nombreTabla.toUpperCase()}(in ${camposIn}) BEGIN UPDATE ${nombreTabla} set ${camposSet} WHERE ${id}=${id}x; END`)
-    resolve(true)
+  return new Promise(async (resolve, reject) => {
+    const verificar = await anadirLinea(` DELIMITER //
+      CREATE PROCEDURE actualizar${nombreTabla.toUpperCase()}(in ${camposIn}) 
+      BEGIN 
+      UPDATE ${nombreTabla} set ${camposSet} WHERE ${id}=${id}x; 
+      END //`)
+    if (verificar) {
+      resolve(true)
+    } else {
+      console.log('Error anadiendo la linea procediemiento insert')
+    }
   })
 }
 

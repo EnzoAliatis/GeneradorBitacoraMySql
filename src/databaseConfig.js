@@ -1,5 +1,5 @@
 const databaseConfig = {
-  name: 'proyecto',
+  name: 'miBBDD',
   host: 'localhost',
   user: 'root',
   password: 'Aliatis777'

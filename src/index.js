@@ -1,3 +1,4 @@
+
 const connection = require('./funciones/utils/connection')
 
 const consultaSimple = require('./funciones/utils/consultaSimple')
@@ -13,6 +14,9 @@ const bitacora = require('./funciones/bitacora/bitacora')
 
 const databaseConfig = require('./databaseConfig')
 
+const creadorArchivo = require('./funciones/utils/creadorArchivo')
+const anadirLinea = require('./funciones/utils/anadirLinea')
+
 
 
 
@@ -21,8 +25,9 @@ const startApp = async () => {
   console.log('Estoy vivo')
 
   const nameDataBase = databaseConfig.name
-  const setDataBaseQuery = `USE ${nameDataBase}`
+  const setDataBaseQuery = `USE ${nameDataBase};`
   const consultaTablasQuery = `SHOW FULL TABLES FROM ${nameDataBase};`
+
 
 
   const queryBitacora = bitacora(bitacoraConfig)
@@ -39,12 +44,18 @@ const startApp = async () => {
   }
 
   // AQUI ENVIAR AL TXT EL QUERY PARA CREAR BITACORA TABLE
+  creadorArchivo(setDataBaseQuery)
+  anadirLinea(queryBitacora)
+
+  
 
   const nombreTablasResult = await consultaSimple(connection, consultaTablasQuery)
 
   nombreTablasResult.map(item => {
+    // HEY!!!!
+    // HEY!!!!
     // AQUI NECESITO TU ATENCION!!!!!! Tables_in_(AQUI PON EL NOMBRE DE TU BBDD MANUALMENTE)
-    nombreTablas.push(item.Tables_in_proyecto)
+    nombreTablas.push(item.Tables_in_mibbdd)
   })
 
   const camposTablas = await dameCampos(nombreTablas, connection)
