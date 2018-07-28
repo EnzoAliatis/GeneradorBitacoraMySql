@@ -18,6 +18,9 @@ Es importante ejecutar la App una sola vez, en caso de hacerlo varias veces, ase
 
 Para que la App sirve correctamente, asegurarse de leer el SETUP.
 
+Se recomienda que todas las tablas tengan el campo de id como id y no como id_tabla...
+Se recomienda que el id de las tablas sea autoincrementable
+
 ## Antes de ejecutar
 
  Tener descargado [Nodejs](https://nodejs.org/es/)
