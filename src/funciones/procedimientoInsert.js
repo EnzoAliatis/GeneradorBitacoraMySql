@@ -35,7 +35,7 @@ const procedimientoInsert = (listaCampos, tipoCampos, nombreTabla, connection) =
 
   return new Promise((resolve, reject) => {
     // AQUI LLAMAR A LA BBDDD CON CONNETION Y resolve con TRUE
-    console.log(`CREATE PROCEDURE insertar${nombreTabla.toUpperCase()}(in ${camposIn}) BEGIN INSERT INTO ${nombreTabla}(${campos}) VALUES ${campos}; end `)    
+    console.log(`CREATE PROCEDURE insertar${nombreTabla.toUpperCase()}(in ${camposIn}) BEGIN INSERT INTO ${nombreTabla}(${campos}) VALUES ${campos}; END `)    
     resolve(true)
   })
 

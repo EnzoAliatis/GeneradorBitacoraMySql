@@ -43,18 +43,18 @@ const startApp = async () => {
 
   // ahora crear procedimiento almacenados por tabla
 
-  nombreTablas.map(async (nobreTabla, idx) => {
-    console.log(nobreTabla)
+  nombreTablas.map(async (nombreTabla, idx) => {
+    console.log(nombreTabla)
     let camposTemp = []
     let typesTemp = []
     camposTablas[idx].map((i, x) => {
       camposTemp.push(i.Field)
       typesTemp.push(i.Type)
     })
-    const creandoProcedimientos = await creadorProcedimientos(camposTemp, typesTemp, nobreTabla)
+    const creandoProcedimientos = await creadorProcedimientos(camposTemp, typesTemp, nombreTabla)
 
     if (creandoProcedimientos) {
-      console.log('Procedimientos INSERTAR creados para la tabla ', nobreTabla)
+      console.log('Procedimientos Creados para la tabla ', nombreTabla)
     }
   })
 
