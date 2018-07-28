@@ -8,6 +8,11 @@ const creadorProcedimientos = require('./funciones/procedimientos/creadorProcedi
 
 const creadorTriggers = require('./funciones/triggers/creadorTriggers')
 
+const bitacoraConfig = require('./funciones/bitacora/bitacoraConfig')
+const bitacora = require('./funciones/bitacora/bitacora')
+
+const databaseConfig = require('./databaseConfig')
+
 
 
 
@@ -15,10 +20,11 @@ const creadorTriggers = require('./funciones/triggers/creadorTriggers')
 const startApp = async () => {
   console.log('Estoy vivo')
 
-  const nameDataBase = 'proyecto'
+  const nameDataBase = databaseConfig.name
   const setDataBaseQuery = `USE ${nameDataBase}`
   const consultaTablasQuery = `SHOW FULL TABLES FROM ${nameDataBase};`
 
+  const queryBitacora = bitacora(bitacoraConfig)
 
 
   let nombreTablas = []
@@ -26,10 +32,12 @@ const startApp = async () => {
   const seteado = await consultaSimple(connection, setDataBaseQuery)
 
   if (seteado) {
-    console.log("bien seatado")
+    console.log(`Bien seteado para tabla ${nameDataBase}`)
   } else {
     console.log('mal seteado')
   }
+
+  // AQUI ENVIAR AL TXT EL QUERY PARA CREAR BITACORA TABLE
 
   const nombreTablasResult = await consultaSimple(connection, consultaTablasQuery)
 
