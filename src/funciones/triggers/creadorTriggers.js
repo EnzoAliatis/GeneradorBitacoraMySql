@@ -3,7 +3,7 @@ const triggerUpdate = require('./triggerUpdate')
 const triggerDelete = require('./triggerDelete')
 
 
-const creadorTriggers = async (nombreTabla) => {
+const creadorTriggers = (nombreTabla) => {
   return new Promise(async (resolve, reject) => {
     const insercion = await triggerInsert(nombreTabla)
     if (insercion) {
@@ -20,8 +20,11 @@ const creadorTriggers = async (nombreTabla) => {
       console.log(`Trigger delete Bien`)
     }
 
-    if(insercion && actualizacion && eliminacion) {
+    if (insercion && actualizacion && eliminacion) {
       resolve(true)
+    } else {
+      console.log('Error en el creador de Triggers')
+      reject()
     }
 
   })

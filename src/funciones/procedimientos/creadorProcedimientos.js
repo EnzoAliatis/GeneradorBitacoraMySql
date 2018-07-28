@@ -1,9 +1,9 @@
-const consultaSimple = require('./consultaSimple')
+
 const procedimientoInsert = require('./procedimientoInsert')
 const procedimientoUpdate = require('./procedimientoUpdate')
 const procedimientoDelete = require('./procedimientoDelete')
 
-const creadorProcedimientos = async (listaCampos, tipoCampos, nombreTabla) => {
+const creadorProcedimientos =  (listaCampos, tipoCampos, nombreTabla) => {
   return new Promise(async (resolve, reject )=> {
     const insert = await procedimientoInsert(listaCampos, tipoCampos, nombreTabla)
     if(insert) {
@@ -20,9 +20,12 @@ const creadorProcedimientos = async (listaCampos, tipoCampos, nombreTabla) => {
       console.log('Delete Bien')
     }
 
-
-
-    resolve(true)
+    if(insert && update && borrar) {
+      resolve(true)
+    } else {
+      console.log('Error en el creador de Procedimientos')
+      reject()
+    }
   })
 }
 

@@ -1,12 +1,12 @@
-const connection = require('./connection')
+const connection = require('./funciones/utils/connection')
 
-const consultaSimple = require('./funciones/consultaSimple')
+const consultaSimple = require('./funciones/utils/consultaSimple')
 
-const dameCampos = require('./funciones/dameCampos')
+const dameCampos = require('./funciones/utils/dameCampos')
 
-const creadorProcedimientos = require('./funciones/creadorProcedimientos')
+const creadorProcedimientos = require('./funciones/procedimientos/creadorProcedimientos')
 
-const creadorTriggers = require('./funciones/creadorTriggers')
+const creadorTriggers = require('./funciones/triggers/creadorTriggers')
 
 
 
@@ -64,12 +64,12 @@ const startApp = async () => {
       console.log('Triggers creados para la tabla ', nombreTabla)
     }
 
+    if (creadorProcedimientos && creadorTriggers) {
+      console.log('TODO BIEN')
+    } else {
+      console.log('Error el INDEX')
+    }
   })
-
-
-  
-
-
 }
 
 

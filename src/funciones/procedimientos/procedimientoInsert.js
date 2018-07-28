@@ -1,5 +1,3 @@
-const consultaSimple = require('./consultaSimple')
-
 
 const queryCamposIn = (listaCampos, tipoCampos) => {
   let qCampos = ""
