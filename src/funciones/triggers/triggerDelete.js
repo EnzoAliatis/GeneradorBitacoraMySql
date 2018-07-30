@@ -6,7 +6,7 @@ const triggerDelete = nombreTabla => {
     // AQUI LLAMAR A LA BBDDD CON CONNETION Y resolve con TRUE
     const verificar = await anadirLinea(`CREATE TRIGGER tr_delete${nombreTabla.toUpperCase()} BEFORE DELETE ON ${nombreTabla} 
     FOR EACH ROW 
-    INSERT INTO bitacora(usuario, descripcion, fecha) VALUES (user(), "${nombreTabla} eliminado", now());
+    INSERT INTO bitacora(usuario, descripcion, fecha, idModificado) VALUES (user(), "${nombreTabla} eliminado", now(), old.id);
     //`)
     if (verificar) {
       resolve(true)

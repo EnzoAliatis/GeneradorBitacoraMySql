@@ -56,7 +56,7 @@ const startApp = async () => {
     // HEY!!!!
     // AQUI NECESITO TU ATENCION!!!!!! Tables_in_(AQUI PON EL NOMBRE DE TU BBDD MANUALMENTE)
     // EN minisculas EL nombre de tu BBDD
-    nombreTablas.push(item.Tables_in_mibbdd)
+    nombreTablas.push(item.Tables_in_escuela)
   })
 
   const camposTablas = await dameCampos(nombreTablas, connection)
